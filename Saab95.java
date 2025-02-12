@@ -21,7 +21,7 @@ public class Saab95 extends Car {
     @Override
     public double speedFactor() {
         double turbo = 1;
-        if (getTurbo()) turbo = 1.3;
+        if (getTurbo()) turbo = 3;
         return getEnginePower() * 0.01 * turbo;
     }
 

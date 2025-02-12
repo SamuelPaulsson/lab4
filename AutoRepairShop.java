@@ -6,7 +6,7 @@ public class AutoRepairShop<T extends Car> implements Loadable<T> {
     private final String shopName;
     private ArrayList<T> loadedCars;
 
-    public AutoRepairShop(int maxLoad, String shopName){
+    public AutoRepairShop(double posX,double posY,int maxLoad, String shopName){
         maxCars = maxLoad;
         this.loadedCars = new ArrayList<>();
         this.shopName = shopName;

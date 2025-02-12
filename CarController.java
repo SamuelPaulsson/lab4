@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
+
+
 /*
 * This class represents the Controller part in the MVC pattern.
 * It's responsibilities is to listen to the View and responds in a appropriate manner by
@@ -27,6 +29,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<AutoRepairShop<Volvo240>> auto = new ArrayList<>();
 
     //methods:
 
@@ -37,6 +40,7 @@ public class CarController {
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
+        cc.auto.add(new AutoRepairShop<Volvo240>(0,400,10,"Helmia"));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -67,6 +71,7 @@ public class CarController {
                     car.turnRight();
                     car.startEngine();
                 }
+
                 frame.drawPanel.moveit(car.getModell(),x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
@@ -101,5 +106,20 @@ public class CarController {
             car.stopEngine();
         }
     }
+    void turboOff() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOff(); // Cast to Saab95 before calling setTurboOff()
+            }
+        }
+    }
+    void turboOn() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOn(); // Cast to Saab95 before calling setTurboOff()
+            }
+        }
+    }
+
 
 }
