@@ -12,7 +12,7 @@ public abstract class Car implements Movable {
     protected int direction; // 0 = north, 1 = east, 2 = south, 3 = west
 
 
-    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+    public Car(double xPos, double yPos, int nrDoors, double enginePower, Color color, String modelName) {
             this.nrDoors = nrDoors;
             if (enginePower <= 0){
                 throw new IllegalArgumentException("Engine power must be positive");//Tillåter ej
@@ -20,8 +20,8 @@ public abstract class Car implements Movable {
             this.enginePower = enginePower;
             this.color = color;
             this.modelName = modelName;
-            this.x = 0;
-            this.y = 0;
+            this.x = xPos;
+            this.y = yPos;
             this.direction = 0;
             stopEngine();
     }
@@ -29,6 +29,10 @@ public abstract class Car implements Movable {
     public double getXCoordinate() {
         return x;
     }
+
+    public void setXCoordinate(int numb) { x =  numb; }
+
+    public void setYCoordinate(int numb) { y =  numb; }
 
     public double getYCoordinate() {
         return y;
@@ -38,6 +42,9 @@ public abstract class Car implements Movable {
         return direction;
     }
 
+    public String getModell() {
+        return modelName;
+    }
 
     public int getNrDoors() {
         return nrDoors;
@@ -60,7 +67,7 @@ public abstract class Car implements Movable {
     }
 
     public void startEngine() {
-        currentSpeed = 0.1;
+        if(currentSpeed== 0){currentSpeed = 0.1;}
     }
 
     public void stopEngine() {

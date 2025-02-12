@@ -14,13 +14,31 @@ public class DrawPanel extends JPanel{
     // To keep track of a single car's position
     Point volvoPoint = new Point();
 
+    BufferedImage saabImage;
+    // To keep track of a single car's position
+    Point saabPoint = new Point();
+
+    BufferedImage scaniaImage;
+    // To keep track of a single car's position
+    Point scaniaPoint = new Point();
+
     BufferedImage volvoWorkshopImage;
     Point volvoWorkshopPoint = new Point(300,300);
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
+    void moveit(String modell,int x, int y){
+        if (modell.equals("Volvo240")) {
+            volvoPoint.x = x;
+            volvoPoint.y = y;
+        } else if (modell.equals("Saab95")) {
+            saabPoint.x = x;
+            saabPoint.y = y;
+
+        } else if (modell.equals("Scania")) {
+            saabPoint.x = x;
+            saabPoint.y = y;
+
+        }
     }
 
     // Initializes the panel and reads the images
@@ -38,6 +56,8 @@ public class DrawPanel extends JPanel{
             // if you are starting in IntelliJ.
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/VolvoBrand.jpg"));
+            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+            scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -52,5 +72,7 @@ public class DrawPanel extends JPanel{
         super.paintComponent(g);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
         g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
+        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null);
     }
 }
