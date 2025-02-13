@@ -9,7 +9,9 @@ public abstract class Car implements Movable {
     private String modelName; // The car model name
     protected double x;
     protected double y;
-    protected int direction; // 0 = north, 1 = east, 2 = south, 3 = west
+    protected int direction;// 0 = north, 1 = east, 2 = south, 3 = west
+    protected boolean canMove= true;
+
 
 
     public Car(double xPos, double yPos, int nrDoors, double enginePower, Color color, String modelName) {
@@ -22,7 +24,7 @@ public abstract class Car implements Movable {
             this.modelName = modelName;
             this.x = xPos;
             this.y = yPos;
-            this.direction = 0;
+            this.direction = 1;
             stopEngine();
     }
 
@@ -106,21 +108,22 @@ public abstract class Car implements Movable {
 
     @Override
     public void move() {
-        switch (direction) {
-            case 0:
-                y += getCurrentSpeed();
-                break;
-            case 1:
-                x += getCurrentSpeed();
-                break;
-            case 2:
-                y -= getCurrentSpeed();
-                break;
-            case 3:
-                x -= getCurrentSpeed();
+        if(canMove) {
+            switch (direction) {
+                case 0:
+                    y += getCurrentSpeed();
+                    break;
+                case 1:
+                    x += getCurrentSpeed();
+                    break;
+                case 2:
+                    y -= getCurrentSpeed();
+                    break;
+                case 3:
+                    x -= getCurrentSpeed();
 
+            }
         }
-
     }
 
     @Override

@@ -5,11 +5,15 @@ public class AutoRepairShop<T extends Car> implements Loadable<T> {
     private final int maxCars;
     private final String shopName;
     private ArrayList<T> loadedCars;
+    private double x;
+    private double y;
 
     public AutoRepairShop(double posX,double posY,int maxLoad, String shopName){
         maxCars = maxLoad;
         this.loadedCars = new ArrayList<>();
         this.shopName = shopName;
+        this.x = posX;
+        this.y = posY;
     }
 
     public ArrayList<T> getLoadedCars() {
@@ -23,6 +27,10 @@ public class AutoRepairShop<T extends Car> implements Loadable<T> {
     public int getMaxCars() {
         return maxCars;
     }
+
+    public double getX(){return this.x;}
+
+    public double getY(){return this.y;}
 
     public T removeSpecific(T car) {
         if (loadedCars.contains(car)) {
@@ -41,9 +49,14 @@ public class AutoRepairShop<T extends Car> implements Loadable<T> {
 
     @Override
     public void load(T car) {
-         if (getLoadedCars().size() < getMaxCars()) {
-             loadedCars.add(car);
-         } else {
+        if (getLoadedCars().size() < getMaxCars()) {
+             if (!getLoadedCars().contains(car)) {
+                 loadedCars.add(car);
+                 car.canMove = false;
+             }
+         }
+
+         else {
              throw new IllegalArgumentException("Shop is full");
          }
      }

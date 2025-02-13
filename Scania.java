@@ -38,4 +38,9 @@ public class Scania extends Car implements HasPlatform {
             super.gas(amount);}
         else {throw new IllegalArgumentException("Unable to gas when angle of platform is not 0"); }
     }
+
+    @Override
+    public void startEngine() {
+        if(currentSpeed== 0 && getPlatformAngle()==0){currentSpeed = 0.1;}
+    }
 }

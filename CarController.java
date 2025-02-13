@@ -14,11 +14,7 @@ import java.util.ArrayList;
 
 public class CarController {
     // member fields:
-    /*private WindowSettings windowSettings = new WindowSettings();
-    static private int carWidth = 100;
-    static private int carHeight = 60;
-    static private int controllerHeight = 200;
-    static private int distanceConstantY = 100 + carHeight;*/
+
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
     // The timer is started with a listener (see below) that executes the statements
@@ -29,7 +25,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-    ArrayList<AutoRepairShop<Volvo240>> auto = new ArrayList<>();
+    AutoRepairShop<Volvo240> volvoshop = new AutoRepairShop<Volvo240>(400,30,10,"Helmia");
 
     //methods:
 
@@ -40,7 +36,6 @@ public class CarController {
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
-        cc.auto.add(new AutoRepairShop<Volvo240>(0,400,10,"Helmia"));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -54,18 +49,32 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            int wy = (int) Math.round(volvoshop.getY());
+            int wx = (int) Math.round(volvoshop.getX());
+            frame.drawPanel.volvoWorkshopPoint.x = wx;
+            frame.drawPanel.volvoWorkshopPoint.y = wy;
             for (Car car : cars) {
                 car.move();
                 int x = (int) Math.round(car.getXCoordinate());
                 int y = (int) Math.round(car.getYCoordinate());
-                if(y > 500){
-                    car.setYCoordinate(500);
+                if (car instanceof Volvo240 volvo) {
+                    if ((x - wx > -100) && (x - wx < 100) && (y - wy > -60) && (y - wy < 60)) {
+                        volvoshop.load(volvo);
+                        car.setXCoordinate(wx);
+                        car.setYCoordinate(wy);
+
+                    }
+                }
+
+
+                if(x > 690){
+                    car.setXCoordinate(690);
                     car.stopEngine();
                     car.turnRight();
                     car.turnRight();
                     car.startEngine();
-                } else if (y < 0) {
-                    car.setYCoordinate(0);
+                } else if (x < 0) {
+                    car.setXCoordinate(0);
                     car.stopEngine();
                     car.turnRight();
                     car.turnRight();
@@ -108,15 +117,29 @@ public class CarController {
     }
     void turboOff() {
         for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff(); // Cast to Saab95 before calling setTurboOff()
+            if (car instanceof Saab95 saab) {
+                (saab).setTurboOff();
             }
         }
     }
     void turboOn() {
         for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn(); // Cast to Saab95 before calling setTurboOff()
+            if (car instanceof Saab95 saab) {
+                (saab).setTurboOn();
+            }
+        }
+    }
+    void raisePlatform() {
+        for (Car car : cars) {
+            if (car instanceof Scania scania) {
+                scania.raisePlatform();
+            }
+        }
+    }
+    void lowerPlatform() {
+        for (Car car : cars) {
+            if (car instanceof Scania scania) {
+                scania.lowerPlatform();
             }
         }
     }
