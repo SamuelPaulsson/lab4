@@ -1,0 +1,61 @@
+Laboration 3 grupp 46
+Uppgift 2
+Vilka beroenden är nödvändiga?
+Saab95, Volvo240, Scania och CarTransport måste ärva från Car eftersom de delar många grundläggande egenskaper och metoder därifrån.
+Workshop är har en Array där items extends Car, vilket skapar en nödvändig koppling mellan dem.
+CarController är beroende av Car eftersom den använder dess metoder som gas(), brake(), turboOn() och turboOff().
+CarView och CarController är beroende av varandra eftersom CarView hanterar knappar, medan CarController definierar vad som ska hända när de trycks.
+Vilka klasser är beroende av varandra som inte borde vara det?
+CarController och CarView har en stark koppling till varandra genom många metoder, vilket gör det svårt att separera deras ansvarsområden. En bättre struktur hade kunnat minska detta beroende.
+Finns det starkare beroenden än nödvändigt?
+CarController och CarView har en onödigt stark koppling, vilket begränsar möjligheten att modifiera dem separat.
+CarController och Drawpanel borde vara åtskildja också
+Kan ni identifiera några brott mot designprinciperna vi diskuterat i kursen?
+DIP (Dependency Inversion Principle): CarController bör inte bero på specifika subklasser av Vehicle.
+LoD (Law of Demeter): CarController ska endast anropa metoder hos sina närmaste vänner.
+Beroenden: Det finns onödiga dubbelriktade beroenden mellan klasser.
+LSP (Liskov Substitution Principle): Lastbilarnas start- och move-metoder är mer begränsade än sin superklass, vilket bryter mot LSP.
+
+Uppgift 3
+CarView
+CarView har ansvar för både att hantera fönstret och användarinteraktionen genom knapptryckningar, vilket gör att den bryter mot både Separation of Concern (SoC) och Single Responsibility Principle (SRP).
+Klassen behöver förändras om vi vill ändra utseendet på gränssnittet, hur bilar ritas upp eller hur knapptryckningar hanteras. Eftersom alla dessa delar hanteras i samma klass kan en förändring påverka flera delar av koden, vilket gör den svårare att underhålla.
+För att bättre följa SoC och SRP skulle CarView kunna delas upp i en klass för att hantera fönstret och en separat klass för att hantera användarinteraktion, vilket skulle göra koden mer strukturerad och lättöverskådlig.
+
+CarController
+CarController har flera ansvarsområden, inklusive att hantera bilarnas rörelse, uppdatera vyn och interagera med användarinmatning.
+Klassen behöver förändras om vi vill ändra hur bilarna styrs, hur de ritas upp i gränssnittet eller hur användarinmatning hanteras. Eftersom dessa ansvarsområden är sammanblandade kan en förändring i en del av systemet påverka flera andra delar.
+För att bättre följa SoC och SRP skulle CarController behöva delas upp i separata klasser för bilarnas rörelsehantering, vyn och användarinteraktion, vilket skulle göra koden mer modulär och lättare att underhålla.
+Cars
+Klassen Cars representerar både bilens egenskaper och dess rörelsemönster. den implementar interface Movable.
+SRP så behöver den bara ändras när användarnas krav frändras. Ur ett SoC-perspektiv är ansvarsområdena något blandade. den sköter både hur bilen rör sig och dess information
+Saab95
+Saab95 är en underklass till Cars. Och implimenterar sin unika speedfactor med hjälp av sin turbo. Den har också en konstruktor som bestämmer hur modellen ser ut
+Detta designval är effektivt enligt Single Responsibility Principle (SRP) eftersom ändringar endast sker om den unika informationen för modellen behöver justeras.
+Volvo240
+Volvo240 liknar Saab95. De implementerar sin unika speedfactor.
+Eftersom de inte delar funktioner och var och en representerar en specifik modell, stödjer detta SoC genom att varje klass endast ansvarar för en enskild modell.
+Scania och CarTransport
+Både Scania och TransportTruck är underklasser till Cars och innehåller modell-specifik information för respektive lastbil. De följer samma designprinciper som de tidigare modellerna och begränsar sig till sitt unika ansvarsområde.
+Autorepairshop
+Workshop-klassen används för att lagra bilar. Eftersom dess funktion är så begränsad finns det i princip inget behov av att ändra den, om inte det övergripande ansvaret för lagring av bilar skulle ändras.
+DrawPanel
+DrawPanel ansvarar för att rita upp gränssnittet samt för att flytta bilarna. Det vore dock bättre att överföra flyttelogiken till CarController, så att DrawPanel enbart hanterar den visuella presentationen.
+
+Flytta egenskaper:
+Placera carHeight och carWidth i WindowSettings. Gör även windowHeight och windowWidth till statiska variabler och ta bort deras konstruktor.
+
+Ändra beroenden:
+Ta bort den direkta sammansättningen av WindowSettings i både CarController och CarView. Använd istället getter-metoder för att komma åt dess variabler. Samma sak bör göras med distanceConstantY, som ska flyttas till WindowSettings med en tillhörande getter.
+
+Omfördela rörelseansvar:
+Just nu hanterar DrawPanel bilarnas rörelse. Denna logik bör flyttas till CarController eller automatiseras så att man inte behöver anropa en metod från en annan klass.
+
+Abstraktion av Cars:
+Gör klassen Cars abstrakt så att den enbart hanterar bilens data. Flytta all rörelsehantering till en separat klass, exempelvis en Movable-klass, för att tydligt separera funktionaliteten.
+
+Dekomponera CarView:
+Dela upp CarView i två separata klasser; en som hanterar knapptryckningar och en annan som ansvarar för själva fönsterhanteringen.
+
+
+
