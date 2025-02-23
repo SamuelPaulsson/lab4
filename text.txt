@@ -51,6 +51,22 @@ Autorepairshop-klassen används för att lagra bilar. Eftersom dess funktion är
 DrawPanel
 DrawPanel ansvarar för att rita upp gränssnittet samt för att flytta bilarna. Det vore dock bättre att överföra flyttelogiken till CarController, så att DrawPanel enbart hanterar den visuella presentationen.
 
+Uppgift 4
+
+1. Dela upp CarController så att den endast fungerar som en koordinator mellan de olika delarna, dvs. CarMover, CarInputHandler och CarView. CarController ska inte längre hantera bilobjekten eller deras rörelse.
+
+
+2. Skapa en separat klass, CarMover, som hanterar bilarnas rörelse och kollisioner. Detta frigör CarController från rörelsehanteringen och gör CarController mer fokuserad på sitt uppdrag som koordinator.
+
+
+3. Skapa en klass, CarInputHandler, som ansvarar för att hantera användarinput (t.ex. knapptryckningar). Denna klass tar emot användarens åtgärder och skickar relevanta kommandon till CarController, vilket gör CarController mer fokuserad och lättare att testa.
+
+
+4. Förenkla CarView så att den enbart ansvarar för visning och hantering av användargränssnittet. Flytta all logik relaterad till knapptryckningar och bilrörelser till CarInputHandler och CarMover.
+
+
+5. Skapa en separat klass, Entities, som ansvarar för att skapa och lagra bilobjekten. Detta frigör CarController från att behöva skapa och spara bilobjekt, vilket gör koden mer modulär och följer principen om Separation of Concerns (SoC).
+
 
 
 
