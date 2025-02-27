@@ -14,7 +14,7 @@ CarController och CarView har en onödigt stark koppling, vilket begränsar möj
 CarController och Drawpanel borde vara åtskildja också
 
 Kan ni identifiera några brott mot designprinciperna vi diskuterat i kursen?
-DIP (Dependency Inversion Principle): CarController bör inte bero på specifika subklasser av Vehicle.
+DIP (Dependency Inversion Principle): CarController bör inte bero på specifika subklasser av Car.
 LoD (Law of Demeter): CarController ska endast anropa metoder hos sina närmaste vänner.
 Beroenden: Det finns onödiga dubbelriktade beroenden mellan klasser.
 LSP (Liskov Substitution Principle): Lastbilarnas start- och move-metoder är mer begränsade än sin superklass, vilket bryter mot LSP.
