@@ -1,2 +1,2 @@
-public interface Vehicle {
+public interface Vehicle extends Movable{
 }

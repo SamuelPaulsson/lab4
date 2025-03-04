@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public abstract class Car implements Movable, Vehicle {
+public abstract class Car implements Vehicle {
 
     private int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
@@ -10,7 +10,7 @@ public abstract class Car implements Movable, Vehicle {
     private double x;
     private double y;
     protected int direction;// 0 = north, 1 = east, 2 = south, 3 = west
-    protected boolean canMove= true;
+    protected boolean canMove = true;
 
 
 
@@ -68,6 +68,10 @@ public abstract class Car implements Movable, Vehicle {
         color = clr;
     }
 
+    public boolean getCanMove(){return canMove;}
+
+    public void setCanMove(boolean argument){canMove = argument;}
+
     public void startEngine() {
         if(currentSpeed== 0){currentSpeed = 0.1;}
     }
@@ -108,7 +112,7 @@ public abstract class Car implements Movable, Vehicle {
 
     @Override
     public void move() {
-        if(canMove) {
+        if(getCanMove()) {
             switch (direction) {
                 case 0:
                     y += getCurrentSpeed();

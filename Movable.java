@@ -5,6 +5,8 @@ public interface Movable {
     void move();
     void turnLeft();
     void turnRight();
+    boolean getCanMove();
+    void setCanMove(boolean argument);
 }
 
 // Här säger vi att alla klasser som implementerar detta interface måste definiera

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class AutoRepairShop<T extends Car> implements Loadable<T> {
+public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
 
     private final int maxCars;
     private final String shopName;
@@ -52,7 +52,7 @@ public class AutoRepairShop<T extends Car> implements Loadable<T> {
         if (getLoadedCars().size() < getMaxCars()) {
              if (!getLoadedCars().contains(car)) {
                  loadedCars.add(car);
-                 car.canMove = false;
+                 car.setCanMove(false);
              }
          }
 

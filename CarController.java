@@ -25,7 +25,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-    AutoRepairShop<Volvo240> volvoshop = new AutoRepairShop<Volvo240>(400,30,10,"Helmia");
+    AutoRepairShop<Volvo> volvoshop = new AutoRepairShop<>(400,30,10,"Helmia");
 
     //methods:
 
@@ -57,7 +57,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getXCoordinate());
                 int y = (int) Math.round(car.getYCoordinate());
-                if (car instanceof Volvo240 volvo) {
+                if (car instanceof Volvo volvo) {
                     if ((x - wx > -100) && (x - wx < 100) && (y - wy > -60) && (y - wy < 60)) {
                         volvoshop.load(volvo);
                         car.setXCoordinate(wx);
@@ -117,28 +117,28 @@ public class CarController {
     }
     void turboOff() {
         for (Car car : cars) {
-            if (car instanceof Saab95 saab) {
+            if (car instanceof Turbo saab) {
                 saab.setTurboOff();
             }
         }
     }
     void turboOn() {
         for (Car car : cars) {
-            if (car instanceof Saab95 saab) {
+            if (car instanceof Turbo saab) {
                 (saab).setTurboOn();
             }
         }
     }
     void raisePlatform() {
         for (Car car : cars) {
-            if (car instanceof Scania scania) {
+            if (car instanceof HasPlatform scania) {
                 scania.raisePlatform();
             }
         }
     }
     void lowerPlatform() {
         for (Car car : cars) {
-            if (car instanceof Scania scania) {
+            if (car instanceof HasPlatform scania) {
                 scania.lowerPlatform();
             }
         }
