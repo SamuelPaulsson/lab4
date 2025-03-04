@@ -1,14 +1,14 @@
 import java.awt.*;
 
-public abstract class Car implements Movable {
+public abstract class Car implements Movable, Vehicle {
 
     private int nrDoors; // Number of doors on the car
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    protected double x;
-    protected double y;
+    private double x;
+    private double y;
     protected int direction;// 0 = north, 1 = east, 2 = south, 3 = west
     protected boolean canMove= true;
 
