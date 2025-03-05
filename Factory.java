@@ -7,7 +7,7 @@ public class Factory {
         Saab95, Volvo240, Scania
     };
 
-    public Vehicle addRandomCar(){
+    public CarObject addRandomCar(){
         int choice = random.nextInt(3);
 
         switch (choice) {
@@ -21,7 +21,7 @@ public class Factory {
                 throw new IllegalStateException("Unexpected value: " + choice);
         }
     }
-    public Vehicle addSpecificCar(VehicleType vehicleType){
+    public CarObject addSpecificCar(VehicleType vehicleType){
         switch (vehicleType) {
             case Saab95:
                 return createSaab95();
@@ -35,14 +35,17 @@ public class Factory {
 
     }
 
-    public Saab95 createSaab95(){
-        return new Saab95();
+    public CarObject createSaab95(){
+        Saab95 saab =  new Saab95();
+        return new CarObject(saab);
     }
-    public Volvo240 createVolvo240(){
-        return new Volvo240();
+    public CarObject createVolvo240(){
+        Volvo240 volvo = new Volvo240();
+        return new CarObject(volvo);
     }
-    public Scania createScania(){
-        return new Scania();
+    public CarObject createScania(){
+        Scania scania = new Scania();
+        return new CarObject(scania);
     }
     public <T extends Vehicle> AutoRepairShop<T> createAutoShop(Class<T> type,String name) {
         return new AutoRepairShop<>(type,400,30,10,name);
