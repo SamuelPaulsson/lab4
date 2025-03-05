@@ -14,6 +14,8 @@ public class Controller{
         this.frame = frame;
     }
 
+    void gas(int amount)
+
 
 
     // This actionListener is for the gas button only
