@@ -47,11 +47,11 @@ public class CarObject implements Drawable {
         car.brake(amount);
     }
 
-    public void StartEngine() {
+    public void startEngine() {
         car.startEngine();
     }
 
-    public void StopEngine() {
+    public void stopEngine() {
         car.stopEngine();
     }
 
