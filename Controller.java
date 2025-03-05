@@ -1,8 +1,16 @@
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Controller {
+public class Controller implements ButtonObserver{
+    private final Modell modell;
 
+    public Controller(Modell modell){
+        this.modell = modell;
+    }
 
 
 
@@ -11,56 +19,56 @@ public class Controller {
         gasButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.gas(gasAmount);
+            modell.gas(gasAmount);
         }
 
     });
         brakeButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.brake(gasAmount);
+            modell.brake(gasAmount);
         }
 
     });
         startButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.startEngine();
+            modell.startEngine();
         }
 
     });
         stopButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.stopEngine();
+            modell.stopEngine();
         }
 
     });
         turboOffButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.turboOff();
+            modell.turboOff();
         }
 
     });
         turboOnButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.turboOn();
+            modell.turboOn();
         }
 
     });
         liftBedButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.raisePlatform();
+            modell.raisePlatform();
         }
 
     });
         lowerBedButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            carC.lowerPlatform();
+            modell.lowerPlatform();
         }
 
     });

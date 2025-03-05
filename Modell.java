@@ -54,7 +54,7 @@ public class Modell {
         car.turnRight();
         car.startEngine();
     };
-    public <V extends Vehicle> void nearAuto(Car car, AutoRepairShop<? extends V> auto) {
+    public <V extends Vehicle> void nearAuto(Car car, AutoRepairShop<V> auto) {
         if (auto.getType().isInstance(car)) {
             V specificCar = (V) car;
             double wx = auto.getX();
@@ -68,9 +68,9 @@ public class Modell {
                 specificCar.setY(wy);
 
 
-
-                }
             }
+        }
+    }
 
 
 
