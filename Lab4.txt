@@ -19,3 +19,25 @@ Mycket logik finns kvar i CarController och CarView, vilket borde flyttas till m
 DrawPanel innehåller fortfarande logik som hör hemma i modellen och borde ingå i View-lagret.
 CarController kan göras ännu tunnare genom att flytta mer logik till modellen.
 Main-funktionen ligger fortfarande i CarController men bör placeras i en separat klass.
+
+3.
+OBSERVER-PATTERN
+Vi har implementerat en observer, som används för att bryta den täta kopplingen mellan Controller och View. Genom att låta Controller agera som en observer av View kan den 
+registrera knapptryckningar utan att vara direkt beroende av View.
+
+FACTORY METHOD
+Vi använder inte factory method för närvarande, men ett sådant mönster skulle kunna underlätta processen att lägga till och ta bort bilar i applikationen. Detta skulle även förbättra följsamheten mot OCP, 
+eftersom nya bilar kan introduceras utan att modifiera befintlig kod – exempelvis genom att skapa en CarFactory eller TruckFactory.
+
+STATE
+State-mönstret ingår inte i vår nuvarande design, men det kan vara relevant om man vill särskilja beteendet när bilarna är i rörelse från när de står stilla. Till exempel kan en truck ha två tillstånd, 
+"moving" och "still", där vissa funktioner endast är aktiva i det stillastående läget. Detta skulle kunna öka programmets robusthet.
+
+COMPOSITE
+I CarController hanteras funktioner som gas, broms och start gemensamt för alla fordon, vilket antyder ett composite-liknande mönster. Dock är det oklart om detta verkligen uppfyller definitionen av composite-mönstret, 
+som traditionellt är kopplat till trädstrukturer.
+
+5.
+Factory method kan vara ett intressant tillägg att överväga.
+
+
