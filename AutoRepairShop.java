@@ -36,6 +36,10 @@ public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
 
     public double getY(){return this.y;}
 
+    public void setX(double newX){x = newX;}
+
+    public void setY(double newY){y = newY;}
+
     public T removeSpecific(T car) {
         if (loadedCars.contains(car)) {
             loadedCars.remove(car);

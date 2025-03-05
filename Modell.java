@@ -83,8 +83,8 @@ public class Modell {
             V specificCar = (V) car.getCar();
             int wx = (int) Math.round(auto.getX());
             int wy = (int) Math.round(auto.getY());
-            int cx = car.getX();
-            int cy = car.getY();
+            int cx = (int) Math.round(car.getX());
+            int cy = (int) Math.round(car.getY());
             if ((cx - wx > -100) &&
                     (cx - wx < 100) &&
                     (cy - wy > -60) &&
