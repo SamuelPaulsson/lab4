@@ -4,10 +4,19 @@ import java.util.ArrayList;
 
 public class Modell {
     private ArrayList<AutoRepairShop<? extends Vehicle>> autos;
+    private ArrayList<CarObject> carObjects;
     public Modell(){
         this.autos = new ArrayList<>();
+        this.carObjects = new ArrayList<>();
+        initObjects();
         AutoRepairShop<Volvo> volvoshop = new AutoRepairShop<>(Volvo.class,400,30,10,"Helmia");
         autos.add(volvoshop);
+    }
+    private void initObjects(){
+        addCar(Factory.createSaab95());
+        addCar(Factory.createVolvo240());
+        addCar(Factory.createScania());
+
     }
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
@@ -30,6 +39,13 @@ public class Modell {
             }
         }
     }
+    public void addCar(CarObject car){
+        if(carObjects.size()<10){
+        carObjects.add(car);
+        }
+    };
+
+
     public void inframe(Car car) {
         if (car.getX() < 0) {
             leftCorrect(car);
@@ -71,6 +87,7 @@ public class Modell {
             }
         }
     }
+
 
 
 
