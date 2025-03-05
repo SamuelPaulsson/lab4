@@ -5,11 +5,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Controller implements ButtonObserver{
+public class Controller{
     private final Modell modell;
+    private final CarView frame;
 
-    public Controller(Modell modell){
+    public Controller(Modell modell, CarView frame){
         this.modell = modell;
+        this.frame = frame;
     }
 
 

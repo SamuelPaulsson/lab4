@@ -112,4 +112,39 @@ public class CarView extends JFrame{
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    public int getGasAmount() {
+        return gasAmount;
+    }
+
+    public JButton getGasButton() {
+        return gasButton;
+    }
+
+    public JButton getBrakeButton() {
+        return brakeButton;
+    }
+
+    public JButton getTurboOnButton() {
+        return turboOnButton;
+    }
+
+    public JButton getTurboOffButton() {
+        return turboOffButton;
+    }
+
+    public JButton getLiftBedButton() {
+        return liftBedButton;
+    }
+
+    public JButton getLowerBedButton() {
+        return lowerBedButton;
+    }
+
+    public JButton getStartButton() {
+        return startButton;
+    }
+
+    public JButton getStopButton() {
+        return stopButton;
+    }
 }
