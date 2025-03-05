@@ -25,7 +25,7 @@ public class CarController {
     CarView frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
-    AutoRepairShop<Volvo> volvoshop = new AutoRepairShop<>(400,30,10,"Helmia");
+    AutoRepairShop<Volvo> volvoshop = new AutoRepairShop<>(Volvo.class,400,30,10,"Helmia");
 
     //methods:
 
@@ -55,26 +55,25 @@ public class CarController {
             frame.drawPanel.volvoWorkshopPoint.y = wy;
             for (Car car : cars) {
                 car.move();
-                int x = (int) Math.round(car.getXCoordinate());
-                int y = (int) Math.round(car.getYCoordinate());
+                int x = (int) Math.round(car.getX());
+                int y = (int) Math.round(car.getY());
                 if (car instanceof Volvo volvo) {
                     if ((x - wx > -100) && (x - wx < 100) && (y - wy > -60) && (y - wy < 60)) {
                         volvoshop.load(volvo);
-                        car.setXCoordinate(wx);
-                        car.setYCoordinate(wy);
+                        car.setX(wx);
+                        car.setY(wy);
 
                     }
                 }
 
-
                 if(x > 690){
-                    car.setXCoordinate(690);
+                    car.setX(690);
                     car.stopEngine();
                     car.turnRight();
                     car.turnRight();
                     car.startEngine();
                 } else if (x < 0) {
-                    car.setXCoordinate(0);
+                    car.setX(0);
                     car.stopEngine();
                     car.turnRight();
                     car.turnRight();

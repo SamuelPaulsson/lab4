@@ -7,13 +7,15 @@ public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
     private ArrayList<T> loadedCars;
     private double x;
     private double y;
+    private final Class<T> type;
 
-    public AutoRepairShop(double posX,double posY,int maxLoad, String shopName){
+    public AutoRepairShop(Class<T> typ,double posX,double posY,int maxLoad, String shopName){
         maxCars = maxLoad;
         this.loadedCars = new ArrayList<>();
         this.shopName = shopName;
         this.x = posX;
         this.y = posY;
+        this.type = typ;
     }
 
     public ArrayList<T> getLoadedCars() {
@@ -23,6 +25,8 @@ public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
     public String getShopName() {
         return shopName;
     }
+
+    public Class<T> getType(){return type;}
 
     public int getMaxCars() {
         return maxCars;
@@ -54,10 +58,10 @@ public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
                  loadedCars.add(car);
                  car.setCanMove(false);
              }
-         }
+        }
 
-         else {
+        else {
              throw new IllegalArgumentException("Shop is full");
-         }
-     }
+        }
+    }
 }

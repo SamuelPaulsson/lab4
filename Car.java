@@ -28,15 +28,15 @@ public abstract class Car implements Vehicle {
             stopEngine();
     }
 
-    public double getXCoordinate() {
+    public double getX() {
         return x;
     }
 
-    public void setXCoordinate(int numb) { x =  numb; }
+    public void setX(int numb) { x =  numb; }
 
-    public void setYCoordinate(int numb) { y =  numb; }
+    public void setY(int numb) { y =  numb; }
 
-    public double getYCoordinate() {
+    public double getY() {
         return y;
     }
 
