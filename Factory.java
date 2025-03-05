@@ -3,7 +3,7 @@ import java.util.Random;
 public class Factory {
 
     private Random random = new Random();
-    public enum CarType {
+    public enum VehicleType {
         Saab95, Volvo240, Scania
     };
 
@@ -21,8 +21,8 @@ public class Factory {
                 throw new IllegalStateException("Unexpected value: " + choice);
         }
     }
-    public Vehicle addSpecificCar(CarType carType){
-        switch (carType) {
+    public Vehicle addSpecificCar(VehicleType vehicleType){
+        switch (vehicleType) {
             case Saab95:
                 return createSaab95();
             case Volvo240:
@@ -30,7 +30,7 @@ public class Factory {
             case Scania:
                 return createScania();
             default:
-                throw new IllegalArgumentException("Unknown car type: " + carType);
+                throw new IllegalArgumentException("Unknown car type: " + vehicleType);
         }
 
     }
@@ -41,8 +41,10 @@ public class Factory {
     public Volvo240 createVolvo240(){
         return new Volvo240();
     }
-    public Scania createScania (){
+    public Scania createScania(){
         return new Scania();
     }
-
+    public <T extends Vehicle> AutoRepairShop<T> createAutoShop(Class<T> type,String name) {
+        return new AutoRepairShop<>(type,400,30,10,name);
+    }
 }
