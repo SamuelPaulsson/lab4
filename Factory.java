@@ -2,12 +2,12 @@ import java.util.Random;
 
 public class Factory {
 
-    private Random random = new Random();
+    private static Random random = new Random();
     public enum VehicleType {
         Saab95, Volvo240, Scania
     };
 
-    public CarObject addRandomCar(){
+    public static CarObject addRandomCar(){
         int choice = random.nextInt(3);
 
         switch (choice) {
@@ -21,7 +21,7 @@ public class Factory {
                 throw new IllegalStateException("Unexpected value: " + choice);
         }
     }
-    public CarObject addSpecificCar(VehicleType vehicleType){
+    public static CarObject addSpecificCar(VehicleType vehicleType){
         switch (vehicleType) {
             case Saab95:
                 return createSaab95();
@@ -35,19 +35,19 @@ public class Factory {
 
     }
 
-    public CarObject createSaab95(){
+    public static CarObject createSaab95(){
         Saab95 saab =  new Saab95();
         return new CarObject(saab);
     }
-    public CarObject createVolvo240(){
+    public static CarObject createVolvo240(){
         Volvo240 volvo = new Volvo240();
         return new CarObject(volvo);
     }
-    public CarObject createScania(){
+    public static CarObject createScania(){
         Scania scania = new Scania();
         return new CarObject(scania);
     }
-    public <T extends Vehicle> AutoRepairShop<T> createAutoShop(Class<T> type,String name) {
+    public static <T extends Vehicle> AutoRepairShop<T> createAutoShop(Class<T> type,String name) {
         return new AutoRepairShop<>(type,400,30,10,name);
     }
 }
