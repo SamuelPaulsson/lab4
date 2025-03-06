@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class Modell {
 
-    private ArrayList<AutoRepairShop<? extends Vehicle>> autos;
+    private ArrayList<AutoObject<? extends Vehicle>> autos;
     private ArrayList<CarObject> carObjects;
     private final int delay = 50;
     private Timer timer;
@@ -22,7 +22,7 @@ public class Modell {
         addCar(Factory.createSaab95());
         addCar(Factory.createVolvo240());
         addCar(Factory.createScania());
-        autos.add(Factory.createAutoShop(Volvo.class,"Helmia"));
+        addAuto(Factory.createAutoShop(Volvo.class,"Helmia"));
 
     }
     private class TimerListener implements ActionListener {
@@ -35,7 +35,7 @@ public class Modell {
     private void updateModel() {
         for (CarObject car : carObjects) {
             car.move();
-            for (AutoRepairShop<? extends Vehicle> auto : autos){
+            for (AutoObject<? extends Vehicle> auto : autos){
                 nearAuto(car,auto);}
             inframe(car);
             /*notifyObservers();*/
@@ -45,6 +45,12 @@ public class Modell {
     public void addCar(CarObject car){
         if(carObjects.size()<10){
         carObjects.add(car);
+        }
+    }
+
+    public void addAuto(AutoObject<? extends Vehicle> auto){
+        if(autos.size()<10){
+            autos.add(auto);
         }
     }
 
@@ -78,7 +84,7 @@ public class Modell {
         car.invertDirection();
         car.startEngine();
     };
-    public <V extends Vehicle> void nearAuto(CarObject car, AutoRepairShop<V> auto) {
+    public <V extends Vehicle> void nearAuto(CarObject car, AutoObject<V> auto) {
         if (auto.getType().isInstance(car.getCar())) {
             V specificCar = (V) car.getCar();
             int wx = (int) Math.round(auto.getX());
@@ -151,5 +157,8 @@ public class Modell {
         for (CarObject car : carObjects) {
             car.raisePlatform();
         }
+    }
+    void createRandCar(){
+        addCar(Factory.addRandomCar());
     }
 }

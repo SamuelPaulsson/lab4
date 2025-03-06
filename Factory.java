@@ -47,7 +47,8 @@ public class Factory {
         Scania scania = new Scania();
         return new CarObject(scania);
     }
-    public static <T extends Vehicle> AutoRepairShop<T> createAutoShop(Class<T> type,String name) {
-        return new AutoRepairShop<>(type,400,30,10,name);
+    public static <T extends Vehicle> AutoObject<T> createAutoShop(Class<T> type,String name) {
+         AutoRepairShop<T> autoShop = new AutoRepairShop<>(type,400,30,10,name);
+        return new AutoObject<>(autoShop);
     }
 }

@@ -1,17 +1,18 @@
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import javax.imageio.ImageIO;
 import javax.swing.text.View;
-public class AutoObject implements Drawable{
+public class AutoObject<T extends Vehicle> implements Drawable{
 
-    private final AutoRepairShop<? extends Vehicle> auto;
+    private final AutoRepairShop<T> auto;
     private BufferedImage image;
 
-    public AutoObject(AutoRepairShop<? extends Vehicle> auto) {
+    public AutoObject(AutoRepairShop<T> auto) {
         this.auto = auto;
         try {
-            this.image = ImageIO.read(View.class.getResourceAsStream("pics/"+ +".jpg"));
+            this.image = ImageIO.read(View.class.getResourceAsStream("pics/"+getType().getSimpleName()+"Brand.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,5 +36,15 @@ public class AutoObject implements Drawable{
     public BufferedImage getImage() {
         return image;
     }
+    public Class<?> getType(){
+        return auto.getType();
+    }
+
+    public void load(T car) {
+        auto.load(car);
+    }
+
+
+
 
 }
