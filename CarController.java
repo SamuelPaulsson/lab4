@@ -22,7 +22,7 @@ public class CarController {
     private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    View frame;
     // A list of cars, modify if needed
     ArrayList<Car> cars = new ArrayList<>();
     AutoRepairShop<Volvo> volvoshop = new AutoRepairShop<>(Volvo.class,400,30,10,"Helmia");
@@ -38,7 +38,7 @@ public class CarController {
         cc.cars.add(new Scania());
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0");
+        cc.frame = new View("CarSim 1.0");
 
         // Start the timer
         cc.timer.start();

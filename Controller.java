@@ -1,15 +1,8 @@
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-public class Controller{
+public class Controller {
     private final Modell modell;
-    private final CarView frame;
+    private final View frame;
 
-    public Controller(Modell modell, CarView frame){
+    public Controller(Modell modell, View frame){
         this.modell = modell;
         this.frame = frame;
     }

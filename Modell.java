@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Modell {
+public class Modell implements Observable {
 
     private ArrayList<AutoObject<? extends Vehicle>> autos;
     private ArrayList<CarObject> carObjects;
+    private ArrayList<Observer> observers = new ArrayList<>();
     private final int delay = 50;
     private Timer timer;
     public Modell(){
@@ -38,19 +39,21 @@ public class Modell {
             for (AutoObject<? extends Vehicle> auto : autos){
                 nearAuto(car,auto);}
             inframe(car);
-            /*notifyObservers();*/
+            notifyObservers();
         }
     }
 
     public void addCar(CarObject car){
         if(carObjects.size()<10){
         carObjects.add(car);
+        notifyObservers();
         }
     }
 
     public void addAuto(AutoObject<? extends Vehicle> auto){
         if(autos.size()<10){
             autos.add(auto);
+            notifyObservers();
         }
     }
 
@@ -58,6 +61,7 @@ public class Modell {
     public void removeCar(){
         if(!carObjects.isEmpty()){
             carObjects.removeLast();
+            notifyObservers();
         }
     }
 
@@ -160,5 +164,22 @@ public class Modell {
     }
     void createRandCar(){
         addCar(Factory.addRandomCar());
+    }
+
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for(Observer observer : observers) {
+            observer.updateViewToModel(this);
+        }
     }
 }

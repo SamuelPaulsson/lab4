@@ -3,7 +3,7 @@ Vilka avvikelser från MVC-idealet kan ni identifiera i det ursprungliga använd
 Smartare: Separera Model helt från View och Controller så att modellen är oberoende av användargränssnittet.
 Dummare: Låt View bara visa uppdaterad information för användaren istället för att innehålla logik.
 Tunnare: Flytta logik, data och metoder från Controller till en separat modellklass för data, tillstånd och domänlogik.
-CarView är kopplad till både CarController och DrawPanel, vilket suddar ut gränserna mellan View och Controller.
+View är kopplad till både CarController och DrawPanel, vilket suddar ut gränserna mellan View och Controller.
 DrawPanel innehåller logik som borde ligga i modellen.
 Vilka av dessa brister åtgärdade ni med er nya design i del 3? Hur då? Vilka brister åtgärdade ni inte?
 
@@ -15,7 +15,7 @@ Skapade “CarInputHandler” som en början till en renodlad Controller-klass, 
 Ej åtgärdade:
 
 Modellen är fortfarande inte helt separerad från View och Controller.
-Mycket logik finns kvar i CarController och CarView, vilket borde flyttas till modellen.
+Mycket logik finns kvar i CarController och View, vilket borde flyttas till modellen.
 DrawPanel innehåller fortfarande logik som hör hemma i modellen och borde ingå i View-lagret.
 CarController kan göras ännu tunnare genom att flytta mer logik till modellen.
 Main-funktionen ligger fortfarande i CarController men bör placeras i en separat klass.

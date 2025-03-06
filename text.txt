@@ -4,13 +4,13 @@ Vilka beroenden är nödvändiga?
 Saab95, Volvo240, Scania och CarTransport måste ärva från Car eftersom de delar många grundläggande egenskaper och metoder därifrån.
 Workshop är har en Array där items extends Car, vilket skapar en nödvändig koppling mellan dem.
 CarController är beroende av Car eftersom den använder dess metoder som gas(), brake(), turboOn() och turboOff().
-CarView och CarController är beroende av varandra eftersom CarView hanterar knappar, medan CarController definierar vad som ska hända när de trycks.
+View och CarController är beroende av varandra eftersom View hanterar knappar, medan CarController definierar vad som ska hända när de trycks.
 
 Vilka klasser är beroende av varandra som inte borde vara det?
-CarController och CarView har en stark koppling till varandra genom många metoder, vilket gör det svårt att separera deras ansvarsområden. En bättre struktur hade kunnat minska detta beroende.
+CarController och View har en stark koppling till varandra genom många metoder, vilket gör det svårt att separera deras ansvarsområden. En bättre struktur hade kunnat minska detta beroende.
 
 Finns det starkare beroenden än nödvändigt?
-CarController och CarView har en onödigt stark koppling, vilket begränsar möjligheten att modifiera dem separat.
+CarController och View har en onödigt stark koppling, vilket begränsar möjligheten att modifiera dem separat.
 CarController och Drawpanel borde vara åtskildja också
 
 Kan ni identifiera några brott mot designprinciperna vi diskuterat i kursen?
@@ -20,10 +20,10 @@ Beroenden: Det finns onödiga dubbelriktade beroenden mellan klasser.
 LSP (Liskov Substitution Principle): Lastbilarnas start- och move-metoder är mer begränsade än sin superklass, vilket bryter mot LSP.
 
 Uppgift 3
-CarView
-CarView har ansvar för både att hantera fönstret och användarinteraktionen genom knapptryckningar, vilket gör att den bryter mot både Separation of Concern (SoC) och Single Responsibility Principle (SRP).
+View
+View har ansvar för både att hantera fönstret och användarinteraktionen genom knapptryckningar, vilket gör att den bryter mot både Separation of Concern (SoC) och Single Responsibility Principle (SRP).
 Klassen behöver förändras om vi vill ändra utseendet på gränssnittet, hur bilar ritas upp eller hur knapptryckningar hanteras. Eftersom alla dessa delar hanteras i samma klass kan en förändring påverka flera delar av koden, vilket gör den svårare att underhålla.
-För att bättre följa SoC och SRP skulle CarView kunna delas upp i en klass för att hantera fönstret och en separat klass för att hantera användarinteraktion, vilket skulle göra koden mer strukturerad och lättöverskådlig.
+För att bättre följa SoC och SRP skulle View kunna delas upp i en klass för att hantera fönstret och en separat klass för att hantera användarinteraktion, vilket skulle göra koden mer strukturerad och lättöverskådlig.
 
 CarController
 CarController har flera ansvarsområden, inklusive att hantera bilarnas rörelse, uppdatera vyn och interagera med användarinmatning.
@@ -53,7 +53,7 @@ DrawPanel ansvarar för att rita upp gränssnittet samt för att flytta bilarna.
 
 Uppgift 4
 
-1. Dela upp CarController så att den endast fungerar som en koordinator mellan de olika delarna, dvs. CarMover, CarInputHandler och CarView. CarController ska inte längre hantera bilobjekten eller deras rörelse.
+1. Dela upp CarController så att den endast fungerar som en koordinator mellan de olika delarna, dvs. CarMover, CarInputHandler och View. CarController ska inte längre hantera bilobjekten eller deras rörelse.
 
 
 2. Skapa en separat klass, CarMover, som hanterar bilarnas rörelse och kollisioner. Detta frigör CarController från rörelsehanteringen och gör CarController mer fokuserad på sitt uppdrag som koordinator.
@@ -62,7 +62,7 @@ Uppgift 4
 3. Skapa en klass, CarInputHandler, som ansvarar för att hantera användarinput (t.ex. knapptryckningar). Denna klass tar emot användarens åtgärder och skickar relevanta kommandon till CarController, vilket gör CarController mer fokuserad och lättare att testa.
 
 
-4. Förenkla CarView så att den enbart ansvarar för visning och hantering av användargränssnittet. Flytta all logik relaterad till knapptryckningar och bilrörelser till CarInputHandler och CarMover.
+4. Förenkla View så att den enbart ansvarar för visning och hantering av användargränssnittet. Flytta all logik relaterad till knapptryckningar och bilrörelser till CarInputHandler och CarMover.
 
 
 5. Skapa en separat klass, Entities, som ansvarar för att skapa och lagra bilobjekten. Detta frigör CarController från att behöva skapa och spara bilobjekt, vilket gör koden mer modulär och följer principen om Separation of Concerns (SoC).
