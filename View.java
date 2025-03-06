@@ -116,8 +116,10 @@ public class View extends JFrame implements Observer {
     void addObserver(ButtonObserver observer){
         buttonObservers.add(observer);
     }
-    public void updateViewToModel(AutoObject<? extends Vehicle> autoObject, CarObject carObject) {
-        for (Vehicle vehicle :
+    public void updateViewToModel(Modell modell) {
+        for (Vehicle vehicle : model.getCarObjects()) {
+            drawPanel.addImage.
+        }
     }
 }
 
