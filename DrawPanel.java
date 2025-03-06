@@ -9,23 +9,7 @@ import javax.swing.*;
 
 public class DrawPanel extends JPanel{
 
-    // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    // To keep track of a single car's position
-    Point volvoPoint = new Point();
 
-    BufferedImage saabImage;
-    // To keep track of a single car's position
-    Point saabPoint = new Point();
-
-    BufferedImage scaniaImage;
-    // To keep track of a single car's position
-    Point scaniaPoint = new Point();
-
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point();
-
-    // TODO: Make this general for all cars
     void moveit(String modell,int x, int y){
         if (modell.equals("Volvo240")) {
             volvoPoint.x = x;
