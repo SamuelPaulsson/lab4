@@ -166,6 +166,14 @@ public class Modell implements Observable {
         addCar(Factory.addRandomCar());
     }
 
+    ArrayList<CarObject> getCarObjects(){
+        return carObjects;
+    }
+
+    ArrayList<AutoObject<? extends Vehicle>> getAutoObjects(){
+        return autos;
+    }
+
     @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
