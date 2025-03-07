@@ -13,7 +13,9 @@ public class Controller implements ButtonObserver {
     }
 
     public void removeCar() {
-        modell.removeCar();
+        CarObject removedCar = modell.removeCar();
+        frame.drawPanel.removeImage(removedCar.getImage());
+
     }
 
     public void gas(int amount) {
@@ -37,7 +39,7 @@ public class Controller implements ButtonObserver {
     }
 
     public void turboOn() {
-        modell.turboOff();
+        modell.turboOn();
     }
 
     public void raisePlatform() {

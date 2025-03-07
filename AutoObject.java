@@ -17,19 +17,19 @@ public class AutoObject<T extends Vehicle> implements Drawable{
             e.printStackTrace();
         }
     }
-    public void setX(int newX){
+    public void setX(double newX){
         auto.setX(newX);
     }
 
-    public void setY(int newY){
+    public void setY(double newY){
         auto.setY(newY);
     }
 
-    public int getX() {
+    public double getX() {
         return (int) auto.getX();
     }
 
-    public int getY() {
+    public double getY() {
         return (int) auto.getY();
     }
 

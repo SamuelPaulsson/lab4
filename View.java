@@ -217,13 +217,13 @@ public class View extends JFrame implements Observer {
     }
     public void updateViewToModel(Modell modell) {
         for (CarObject c : modell.getCarObjects()) {
-            drawPanel.addImage(c.getImage(), c.getX(), c.getY());
-            drawPanel.moveit(c.getImage(), c.getX(), c.getY());
+            drawPanel.addImage(c.getImage(), (int) c.getX(), (int) c.getY());
+            drawPanel.moveit(c.getImage(), (int) c.getX(), (int) c.getY());
         }
 
         for (AutoObject<? extends Vehicle> a : modell.getAutoObjects()) {
-            drawPanel.addImage(a.getImage(), a.getX(), a.getY());
-            drawPanel.moveit(a.getImage(), a.getX(), a.getY());
+            drawPanel.addImage(a.getImage(), (int) a.getX(), (int) a.getY());
+            drawPanel.moveit(a.getImage(),(int) a.getX(), (int) a.getY());
         }
         drawPanel.repaint();
     }

@@ -58,11 +58,11 @@ public class Modell implements Observable {
     }
 
 
-    public void removeCar(){
+    public CarObject removeCar(){
         if(!carObjects.isEmpty()){
-            carObjects.removeLast();
-            notifyObservers();
+            return carObjects.removeLast();
         }
+        return null;
     }
 
 
