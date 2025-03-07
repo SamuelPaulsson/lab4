@@ -12,7 +12,7 @@ public class AutoObject<T extends Vehicle> implements Drawable{
     public AutoObject(AutoRepairShop<T> auto) {
         this.auto = auto;
         try {
-            this.image = ImageIO.read(View.class.getResourceAsStream("pics/"+getType().getSimpleName()+"Brand.jpg"));
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("pics/"+getType().getSimpleName()+"Brand.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
