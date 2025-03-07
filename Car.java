@@ -7,14 +7,14 @@ public abstract class Car implements Vehicle {
     protected double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    private double x;
-    private double y;
+    private int x;
+    private int y;
     protected int direction;// 0 = north, 1 = east, 2 = south, 3 = west
     protected boolean canMove = true;
 
 
 
-    public Car(double xPos, double yPos, int nrDoors, double enginePower, Color color, String modelName) {
+    public Car(int xPos, int yPos, int nrDoors, double enginePower, Color color, String modelName) {
             this.nrDoors = nrDoors;
             if (enginePower <= 0){
                 throw new IllegalArgumentException("Engine power must be positive");//Tillåter ej
@@ -28,7 +28,7 @@ public abstract class Car implements Vehicle {
             stopEngine();
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
@@ -36,7 +36,7 @@ public abstract class Car implements Vehicle {
 
     public void setY(int numb) { y =  numb; }
 
-    public double getY() {
+    public int getY() {
         return y;
     }
 

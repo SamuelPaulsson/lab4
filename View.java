@@ -2,6 +2,9 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  * This class represents the full view of the MVC pattern of your car simulator.
@@ -17,7 +20,7 @@ public class View extends JFrame implements Observer {
 
     // The controller member
 
-
+    ArrayList<ButtonObserver> buttonObservers = new ArrayList<>();
     DrawPanel drawPanel = new DrawPanel(X, Y-240);
 
     JPanel controlPanel = new JPanel();
@@ -98,6 +101,78 @@ public class View extends JFrame implements Observer {
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
+        gasButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.gas(gasAmount);
+                }
+            }
+
+        });
+        brakeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.brake(gasAmount);
+                }
+            }
+
+        });
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.startEngine();
+            }
+        }
+
+        });
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.stopEngine();
+                }
+            }
+
+        });
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.turboOff();
+                }
+            }
+
+        });
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.turboOn();
+                }
+            }
+
+        });
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.raisePlatform();
+                }
+            }
+        });
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for(ButtonObserver observer : buttonObservers){
+                    observer.lowerPlatform();
+                }
+            }
+
+        });
+
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.
@@ -118,12 +193,12 @@ public class View extends JFrame implements Observer {
     }
     public void updateViewToModel(Modell modell) {
         for (CarObject c : modell.getCarObjects()) {
-            drawPanel.addImage.(c.getImage(), c.getX(), c.getY());
+            drawPanel.addImage(c.getImage(), c.getX(), c.getY());
             drawPanel.moveit(c.getImage(), c.getX(), c.getY());
         }
 
         for (AutoObject<? extends Vehicle> a : modell.getAutoObjects()) {
-            drawPanel.addImage.(a.getImage(), a.getX(), a.getY());
+            drawPanel.addImage(a.getImage(), a.getX(), a.getY());
             drawPanel.moveit(a.getImage(), a.getX(), a.getY());
         }
         drawPanel.repaint();

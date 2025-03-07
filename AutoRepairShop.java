@@ -5,11 +5,11 @@ public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
     private final int maxCars;
     private final String shopName;
     private ArrayList<T> loadedCars;
-    private double x;
-    private double y;
+    private int x;
+    private int y;
     private final Class<T> type;
 
-    public AutoRepairShop(Class<T> typ,double posX,double posY,int maxLoad, String shopName){
+    public AutoRepairShop(Class<T> typ,int posX,int posY,int maxLoad, String shopName){
         maxCars = maxLoad;
         this.loadedCars = new ArrayList<>();
         this.shopName = shopName;
@@ -32,13 +32,13 @@ public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
         return maxCars;
     }
 
-    public double getX(){return this.x;}
+    public int getX(){return this.x;}
 
-    public double getY(){return this.y;}
+    public int getY(){return this.y;}
 
-    public void setX(double newX){x = newX;}
+    public void setX(int newX){x = newX;}
 
-    public void setY(double newY){y = newY;}
+    public void setY(int newY){y = newY;}
 
     public T removeSpecific(T car) {
         if (loadedCars.contains(car)) {

@@ -1,6 +1,6 @@
 public interface Coordinates {
-    public double getX();
-    public double getY();
-    public void setX(double x);
-    public void setY(double y);
+    public int getX();
+    public int getY();
+    public void setX(int x);
+    public void setY(int y);
 }

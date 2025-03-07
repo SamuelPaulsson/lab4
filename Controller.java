@@ -1,4 +1,4 @@
-public class Controller {
+public class Controller implements ButtonObserver {
     private final Modell modell;
     private final View frame;
 
@@ -7,66 +7,44 @@ public class Controller {
         this.frame = frame;
     }
 
-    void gas(int amount)
+    public void addCar() {
+        modell.createRandCar();
+    }
 
+    public void removeCar() {
+        modell.removeCar();
+    }
 
+    public void gas(int amount) {
+        modell.gas(amount);
+    }
 
-    // This actionListener is for the gas button only
-    // TODO: Create more for each component as necessary
-        gasButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.gas(gasAmount);
-        }
+    public void brake(int amount) {
+        modell.gas(amount);
+    }
 
-    });
-        brakeButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.brake(gasAmount);
-        }
+    public void startEngine() {
+        modell.startEngine();
+    }
 
-    });
-        startButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.startEngine();
-        }
+    public void stopEngine() {
+        modell.stopEngine();
+    }
 
-    });
-        stopButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.stopEngine();
-        }
+    public void turboOff() {
+        modell.turboOff();
+    }
 
-    });
-        turboOffButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.turboOff();
-        }
+    public void turboOn() {
+        modell.turboOff();
+    }
 
-    });
-        turboOnButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.turboOn();
-        }
+    public void raisePlatform() {
+        modell.raisePlatform();
+    }
 
-    });
-        liftBedButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.raisePlatform();
-        }
+    public void lowerPlatform() {
+        modell.lowerPlatform();
+    }
 
-    });
-        lowerBedButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            modell.lowerPlatform();
-        }
-
-    });
 }

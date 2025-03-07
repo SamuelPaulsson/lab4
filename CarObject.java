@@ -19,19 +19,19 @@ public class CarObject implements Drawable {
 
 
 
-    public void setX(double newX){
+    public void setX(int newX){
         car.setX(newX);
     }
 
-    public void setY(double newY){
+    public void setY(int newY){
         car.setY(newY);
     }
 
-    public double getX() {
+    public int getX() {
         return car.getX();
     }
 
-    public double getY() {
+    public int getY() {
         return car.getY();
     }
 
