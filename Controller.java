@@ -5,6 +5,7 @@ public class Controller implements ButtonObserver {
     public Controller(Modell modell, View frame){
         this.modell = modell;
         this.frame = frame;
+        frame.addObserver(this);
     }
 
     public void addCar() {

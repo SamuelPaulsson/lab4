@@ -143,8 +143,11 @@ public class View extends JFrame implements Observer {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked! ActionListener triggered.");
                 for(ButtonObserver observer : buttonObservers){
+                    System.out.println("For loop entered");
                     observer.startEngine();
+                    System.out.println("engine started");
             }
         }
 
