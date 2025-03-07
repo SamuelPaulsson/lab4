@@ -58,11 +58,10 @@ public class Modell implements Observable {
     }
 
 
-    public CarObject removeCar(){
-        if(!carObjects.isEmpty()){
-            return carObjects.removeLast();
-        }
-        return null;
+    public void removeCar(){
+        carObjects.removeLast();
+        notifyObservers();
+
     }
 
 
@@ -166,8 +165,11 @@ public class Modell implements Observable {
         addCar(Factory.addRandomCar());
     }
 
-    ArrayList<CarObject> getCarObjects(){
-        return carObjects;
+    ArrayList<Drawable> getDrawObjects(){
+        ArrayList<Drawable> drawObjects = new ArrayList<>();
+        drawObjects.addAll(carObjects);
+        drawObjects.addAll(autos);
+        return drawObjects;
     }
 
     ArrayList<AutoObject<? extends Vehicle>> getAutoObjects(){

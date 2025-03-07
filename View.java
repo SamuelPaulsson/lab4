@@ -14,14 +14,14 @@ import java.util.ArrayList;
  * TODO: Write more actionListeners and wire the rest of the buttons
  **/
 
-public class View extends JFrame implements Observer {
+public class View extends JFrame {
     private static final int X = 800;
     private static final int Y = 800;
 
     // The controller member
 
     ArrayList<ButtonObserver> buttonObservers = new ArrayList<>();
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
 
@@ -43,8 +43,11 @@ public class View extends JFrame implements Observer {
     JButton removeCarButton = new JButton("remove car");
 
     // Constructor
-    public View(String framename){
+    public View(String framename, DrawPanel draw){
+        this.drawPanel = draw;
         initComponents(framename);
+
+
     }
 
     // Sets everything in place and fits everything
@@ -215,18 +218,7 @@ public class View extends JFrame implements Observer {
     void addObserver(ButtonObserver observer){
         buttonObservers.add(observer);
     }
-    public void updateViewToModel(Modell modell) {
-        for (CarObject c : modell.getCarObjects()) {
-            drawPanel.addImage(c.getImage(), (int) c.getX(), (int) c.getY());
-            drawPanel.moveit(c.getImage(), (int) c.getX(), (int) c.getY());
-        }
 
-        for (AutoObject<? extends Vehicle> a : modell.getAutoObjects()) {
-            drawPanel.addImage(a.getImage(), (int) a.getX(), (int) a.getY());
-            drawPanel.moveit(a.getImage(),(int) a.getX(), (int) a.getY());
-        }
-        drawPanel.repaint();
-    }
 }
 
 
