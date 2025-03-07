@@ -1,5 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.text.View;
@@ -11,7 +12,7 @@ public class CarObject implements Drawable {
     public CarObject(Car car) {
         this.car = car;
         try {
-            this.image = ImageIO.read(View.class.getResourceAsStream("pics/"+car.getModell()+".jpg"));
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("pics/" + car.getModell() + ".jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
