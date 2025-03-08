@@ -40,51 +40,51 @@ public class CarObject implements Drawable {
         return image;
     }
 
-    public void gas(double amount) {
+    void gas(double amount) {
         car.gas(amount);
     }
 
-    public void brake(double amount) {
+    void brake(double amount) {
         car.brake(amount);
     }
 
-    public void startEngine() {
+    void startEngine() {
         car.startEngine();
     }
 
-    public void stopEngine() {
+    void stopEngine() {
         car.stopEngine();
     }
 
-    public void invertDirection() {
+    void invertDirection() {
         car.turnLeft();
         car.turnLeft();
     }
 
-    public void move() {
+    void move() {
         car.move();
     }
 
-    public Car getCar() {
+    Car getCar() {
         return car;
     }
 
-    public void setTurboOn() {
+    void setTurboOn() {
         if (car instanceof Turbo turbo) {
             turbo.setTurboOn();
         }
     }
-    public void setTurboOff() {
+    void setTurboOff() {
         if (car instanceof Turbo turbo) {
             turbo.setTurboOff();
         }
     }
-    public void raisePlatform() {
+    void raisePlatform() {
         if (car instanceof HasPlatform platform) {
             platform.raisePlatform();
         }
     }
-    public void lowerPlatform() {
+    void lowerPlatform() {
         if (car instanceof HasPlatform platform) {
             platform.lowerPlatform();
         }

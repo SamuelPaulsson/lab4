@@ -1,11 +1,10 @@
 public class Controller implements ButtonObserver {
     private final Modell modell;
-    private final View frame;
 
-    public Controller(Modell modell, View frame){
+
+    public Controller(Modell modell){
         this.modell = modell;
-        this.frame = frame;
-        frame.addObserver(this);
+
     }
 
     public void addCar() {

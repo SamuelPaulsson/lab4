@@ -5,7 +5,8 @@ public class Main {
         Modell modell = new Modell();
         View frame = new View("Carsim2.0",draw);
         modell.addObserver(draw);
-        Controller controller = new Controller(modell, frame);
+        Controller controller = new Controller(modell);
+        frame.addButtonObserver(controller);
         modell.startTimer();
     }
 

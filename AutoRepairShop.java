@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class AutoRepairShop<T extends Vehicle> implements Loadable<T> {
+public class AutoRepairShop<T extends Vehicle> implements Loadable<T>,Coordinates {
 
     private final int maxCars;
     private final String shopName;

@@ -65,7 +65,7 @@ public class Modell implements Observable {
     }
 
 
-    public void inframe(CarObject car) {
+    private void inframe(CarObject car) {
         if (car.getX() < 0) {
             leftCorrect(car);
         }
@@ -74,20 +74,20 @@ public class Modell implements Observable {
         } ;
     };
 
-    public void rightCorrect(CarObject car){
+    private void rightCorrect(CarObject car){
         car.setX(690);
         car.stopEngine();
         car.invertDirection();
         car.startEngine();
         };
 
-    public void leftCorrect(CarObject car){
+    private void leftCorrect(CarObject car){
         car.setX(0);
         car.stopEngine();
         car.invertDirection();
         car.startEngine();
     };
-    public <V extends Vehicle> void nearAuto(CarObject car, AutoObject<V> auto) {
+    private  <V extends Vehicle> void nearAuto(CarObject car, AutoObject<V> auto) {
         if (auto.getType().isInstance(car.getCar())) {
             V specificCar = (V) car.getCar();
             int wx = (int) Math.round(auto.getX());
@@ -158,7 +158,7 @@ public class Modell implements Observable {
     }
     void lowerPlatform() {
         for (CarObject car : carObjects) {
-            car.raisePlatform();
+            car.lowerPlatform();
         }
     }
     void createRandCar(){

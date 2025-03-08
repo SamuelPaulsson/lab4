@@ -20,8 +20,8 @@ public class View extends JFrame {
 
     // The controller member
 
-    ArrayList<ButtonObserver> buttonObservers = new ArrayList<>();
-    DrawPanel drawPanel;
+    private ArrayList<ButtonObserver> buttonObservers = new ArrayList<>();
+    private final DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
 
@@ -215,7 +215,7 @@ public class View extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    void addObserver(ButtonObserver observer){
+    void addButtonObserver(ButtonObserver observer){
         buttonObservers.add(observer);
     }
 
