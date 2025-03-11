@@ -22,12 +22,12 @@ Main-funktionen ligger fortfarande i CarController men bör placeras i en separa
 
 3.
 OBSERVER-PATTERN
-Vi har implementerat en observer, som används för att bryta den täta kopplingen mellan Controller och View. Genom att låta Controller agera som en observer av View kan den 
-registrera knapptryckningar utan att vara direkt beroende av View.
+I den nya designen har vi implementerat en observer och en button observer, som används för att bryta den täta kopplingen mellan Controller, View och Model. Genom att låta Controller agera som en button observer av View kan den
+registrera knapptryckningar utan att vara direkt beroende av View. Genom att sedan låta DrawPanel (del av View) vara en observer av Model får vi en svagare koppling mellan Model och View.
 
 FACTORY METHOD
-Vi använder inte factory method för närvarande, men ett sådant mönster skulle kunna underlätta processen att lägga till och ta bort bilar i applikationen. Detta skulle även förbättra följsamheten mot OCP, 
-eftersom nya bilar kan introduceras utan att modifiera befintlig kod – exempelvis genom att skapa en CarFactory eller TruckFactory.
+Den nya designen implementerar en factory för att skapa olika entiteter som bilar och AutoRepairShop. Detta mönster underlättar processen av att lägga till och ta bort bilar i applikationen. Detta förbättrar även OCP,
+eftersom nya bilar kan introduceras utan att modifiera befintlig kod.
 
 STATE
 State-mönstret ingår inte i vår nuvarande design, men det kan vara relevant om man vill särskilja beteendet när bilarna är i rörelse från när de står stilla. Till exempel kan en truck ha två tillstånd, 
@@ -38,6 +38,6 @@ I CarController hanteras funktioner som gas, broms och start gemensamt för alla
 som traditionellt är kopplat till trädstrukturer.
 
 5.
-Factory method kan vara ett intressant tillägg att överväga.
+Factory method visade sig vara mycket relevant för denna implementering.
 
 
