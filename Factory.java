@@ -8,30 +8,19 @@ public class Factory {
     };
 
     public static CarObject addRandomCar(){
-        int choice = random.nextInt(3);
+        int choice = random.nextInt(VehicleType.values().length);
+        VehicleType ty = VehicleType.values()[choice];
+        return addSpecificCar(ty);
 
-        switch (choice) {
-            case 0:
-                return createSaab95();
-            case 1:
-                return createVolvo240();
-            case 2:
-                return createScania();
-            default:
-                throw new IllegalStateException("Unexpected value: " + choice);
-        }
     }
     public static CarObject addSpecificCar(VehicleType vehicleType){
-        switch (vehicleType) {
-            case Saab95:
-                return createSaab95();
-            case Volvo240:
-                return createVolvo240();
-            case Scania:
-                return createScania();
-            default:
-                throw new IllegalArgumentException("Unknown car type: " + vehicleType);
-        }
+        return switch (vehicleType) {
+            case Saab95 -> createSaab95();
+            case Volvo240 -> createVolvo240();
+            case Scania -> createScania();
+            // default:
+            //   throw new IllegalArgumentException("Unknown car type: " + vehicleType);
+        };
 
     }
 
