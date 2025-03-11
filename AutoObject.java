@@ -36,7 +36,7 @@ public class AutoObject<T extends Vehicle> implements Drawable{
     public BufferedImage getImage() {
         return image;
     }
-    public Class<?> getType(){
+    public Class<T> getType(){
         return auto.getType();
     }
 
